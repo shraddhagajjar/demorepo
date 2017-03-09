@@ -1,0 +1,18 @@
+
+extends layout
+
+block content
+  h1= title
+  
+  p Order #{title}
+  
+  form(name="myForm", action="/findnumber", method="post")
+      label #{label1}
+      input(type="text", name="number1")
+      br
+      br
+      label #{label2}
+      input(type="text", name="number2")
+      hr
+      input(type="submit", value="MAX", name="max")
+      input(type="submit", value="MIN", name="min")
