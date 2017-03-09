@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<!--
+
+
+Student Info: Name=Shraddhaben Gajjar, ID=15992
+
+Subject: CS557_quize2_Summer_2015
+
+Author: shraddha
+
+Filename: index.html
+
+Date and Time: Jun 20, 2016 2:29:57 PM
+
+Project Name: Quixe-2
+
+-->
+<html>
+    <head>
+        <title>:: 15592 quize - 2 </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+
+            body {
+                font-size: 11.5pt;
+                line-height: 1.75em;
+                margin: 0px auto;
+                background-color: bisque;
+                background-attachment:fixed;
+                background-position:center;
+                letter-spacing: -0.02em;
+                margin: 10px;
+            }
+
+
+            @media screen and (max-width:481px) {
+                body{
+                    width: 90%;
+                    background-color: aliceblue;
+                }
+
+                .navigation ul li {
+                    width: 33.333333%; 
+                        display: flex;
+                }
+                
+                header,footer{
+                    clear: both;
+                    margin: 0px auto;
+                    height:70px;
+                    width: 90%;
+                    border-style: groove;
+                }
+                header{
+                    height:200px;
+                }
+
+                #sectionmain, #sideleft,#sideright{
+                    width: 90%;
+                    border-style: groove;
+                    margin: 0px auto;
+
+                }
+
+                #sideleft,#sideright{
+                    min-height: 100px;
+                }
+                #sectionmain{
+                    min-height: 250px;
+                }
+
+            }
+
+            @media screen and (min-width:480px) {
+                body{
+                    width: 90%;
+                    margin: 0px auto;
+                }
+                header,footer{
+                    clear: both;
+                    margin: 0px auto;
+                    height:100px;
+                    width: 90%;
+                    border-style: groove;
+                }
+                footer{
+                    height: 70px;
+                }
+                .navigation ul li {
+                    display:inline;
+                    
+                }
+                #main {
+                    width: 90%;
+                    border-style: groove;
+                    margin: 0px auto;
+                    min-height: 355px;
+                }
+
+                #sectionmain {
+                    float: right;
+                    width: 58%;
+                    border-style: groove;
+                    margin: 0px auto;
+
+                    min-height: 350px;
+                }
+                #sideleft{
+                    float: right;
+                    border-style: groove;
+                    width:20%;
+                    min-height: 350px;
+                    margin: 0px auto;
+                }
+
+                #sideright{
+                    border-style: groove;
+                    float: right;
+                    width:20%;
+                    min-height: 350px;
+                    margin: 0px auto;
+                }
+            }
+        </style>
+
+    </head>
+    <body>
+        <header> 
+            <h1>Header</h1>
+
+            <div class="navigation"> 
+                <ul> 
+                    <li><a href="/">Home</a></li> 
+                    <li><a href="Academics.html">Academics</a></li> 
+                    <li><a href="Admissions.html">Admissions</a></li> 
+                    <li><a href="Academics.html">Student</a></li> 
+                </ul> 
+            </div>
+        </header>
+        <div id="main">
+            <aside id="sideright"><h1>right sidebar</h1></aside>
+
+            <section id="sectionmain"><h1>Main</h1></section>
+            <aside id="sideleft"><h1>Left side bar</h1></aside>
+        </div>
+        <footer><h1>Footer</h1></footer>
+    </body>
+</html>
