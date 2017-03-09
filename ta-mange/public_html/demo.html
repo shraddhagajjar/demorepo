@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+--><!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+        
+        <style>
+            body {
+                  background-image: url("Pattern.png");
+                  padding-top: 1%;
+                  padding-left: 15%;
+                  height: 100%; 
+                  width: 100%; 
+            }
+            #header {
+                  width:100%;
+            }
+            #nav {
+                  line-height:30px;
+                  width:140px;
+                  float:left;
+                  padding:1px;
+            }
+            #section {
+                  width:350px;
+                  float:left;
+                  padding:10px;
+            }
+            #footer {
+                  width:100%;
+                  height:30px;
+                  background-color:#8f2e2e;
+                  color:white;
+                  clear:both;
+                  margin: 0 auto;
+            }
+        </style>
+        </head>
+        <body>  
+
+    <header>   
+        <img  align="center" src="BG.png" width="80%"/>        
+    </header>
+             <div id="nav" border="1">
+          <h3>Useful Links</h3>
+          <nav>
+          <ul>
+            <li><a href="http://www.npu.edu">NPU Website </a></li>
+            <li><a href="https://www.google.com">Google Search</a></li>
+            <li><a href="http://www.bing.com">Bing Search</a></li>
+         </ul>
+        </nav>
+    </div>
+    <body> 
+       <p id="demo"></p>
+    <div id="section">
+         <section>
+            <h2>This is a test.</h2>
+         </section>
+    <div>
+        
+    <form id="myForm">
+        <table border="1" style="width:90%">        
+            <tr>
+                <td>First Name : </td>
+                <td><input type="text"   border-radius= "25px" padding="20px" name="fname" id="txtFname" /></td>
+            </tr>
+        
+            <tr>
+                <td>Last Name : </td>
+                <td><input type="text" border-radius= "25px" padding="20px" name="lname" id="txtLname"/></td>
+            </tr>
+            <tr>
+                <td>Student ID : </td>
+                <td><input type="text" border-radius= "25px" padding="20px" name="txtxstudId" id="txtStudId"/></td>
+            </tr>
+            <tr>
+                <td>Area of Specialization :</td>
+                <td>
+                    <select id = "areaOfSpecialization" name="areaOfSpecialization">
+                        <option value="Programming" selected >Programming</option>
+                       <option value="Networking">Networking</option>
+                        <option value="Testing">Testing</option>
+                        <option value="Database">Database</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Selected</td>
+                <td> <input type="checkbox" name="selected" value="selected" id ="isSelected"</td>
+            </tr>
+        </table>
+<!--        </tr>-->
+        <br/>   
+        <tr border="1">
+             <table border="1" style="width:95%">
+                <tr>  
+                    <td><button type="button"  id = "btnNew" border-radius= "25px" background ="#d9d3c4" onclick="newStud('txtList')">New</button></td>
+                    <td><button type="button"  id = "btnEdit" onclick="edit()">Edit</button></td>
+                    <td><button type="button"  id = "btnDelete" disabled onclick="deleteRec('txtList')">Delete</button></td>
+                    <td><button type="button" id = "btnSave" disabled onclick="save()">Save</button></td>
+                    <td><button type="button" id="btnCancel" disabled onclick="cancel()">Cancel</button></td>
+                </tr>
+  
+                <tr>
+                    <td><button type="button" id = "btnFirst" onclick="first()">First</button></td>
+                    <td><button type="button" id= "btnPrevious" onclick="previous()">Previous</button></td>
+                    <td><button type="button" id= "btnNext" onclick="next()">Next</button></td>
+                    <td><button type="button" id="btnLast" onclick="last()">Last</button></td>
+                    <td><button type="button" id = "btnSelect" onclick="selectRec()">Select</button></td>
+                </tr>
+            </table> 
+        </tr>
+
+
+        <tr>
+            <h2>Logs</h2>
+            <textarea id= "txtList" rows="6" cols="50" border-radius= "25px" border-collapse="collapse">
+            </textarea>
+            </tr>
+        <!--</table>-->
+</div>
+</form>
+
+
+        <script type="text/javascript">
+        var options = ["Programming", "Networking", "Testing", "Database"];
+        document.getElementById("section").innerHTML = areaOfInterest.toString();
+        
+        var select = document.getElementById("areaOfSpecialization");
+        for(var i = 0; i < options.length; i++) {
+            var opt = options[i];
+            var el = document.createElement("option");
+            el.textContent = opt;
+            el.value = opt;
+            select.appendChild(el);
+        }
+
+
+        function newStud(input) {
+
+
+            obj = document.getElementById(input);
+            obj.value += "Added : " +  document.getElementById("txtFname").value + " " +
+                    document.getElementById("txtLname").value + ", " + 
+                    document.getElementById("txtStudId").value + ", " + 
+                    document.getElementById("areaOfSpecialization").value+ "\n";
+            
+            studentList = new Array();
+            student1 = { firstName : "John", lastName:  "Doe", studId : 50, specialization : "Programming" };
+            student2 = { firstName : "Priya", lastName:  "Patel", studId : 49, specialization : "Testing" };
+            student3 = { firstName:"Maitri", lastName:"Mehta",studId:17060, specialization :"Programming" };
+            var student;
+            student.firstName = document.getElementById("txtFname").value;
+            student.lastName = document.getElementById("txtLname").value;
+            student.studId = document.getElementById("txtStudId").value;
+            student.specialization = document.getElementById("areaOfSpecialization").value; 
+            student.selected = document.getElementById("isSelected").value; 
+            studentList.push(student1);
+            studentList.push(student2);
+            studentList.push(student3);
+            studentList.push(student);
+
+            
+            obj.value += studentList.length;
+//            document.getElementById("demo").innerHTML = studentList.length;
+        }
+        
+         function edit() {
+              document.getElementById("btnDelete").disabled = false;
+              document.getElementById("btnSave").disabled = false;
+              document.getElementById("btnCancel").disabled = false;
+        }
+        
+         function deleteRec() {
+            var obj = document.getElementById(input);
+            obj.value += "Removed : " +  document.getElementById("txtFname").value + " " +
+                    document.getElementById("txtLname").value + ", " + 
+                    document.getElementById("txtStudId").value + ", " + 
+                    document.getElementById("areaOfSpecialization").value+ "\n";  
+        }
+        
+        function save() {
+        }
+        
+        function cancel() {
+            document.getElementById("myForm").reset();
+        }
+        
+        function first() {
+            document.getElementById("txtFname").value = studentList[0].firstName;
+            document.getElementById("txtLname").value = studentList[0].lastName;
+            document.getElementById("txtStudId").value = studentList[0].studId;
+            document.getElementById("areaOfSpecialization").value = studentList[0].specialization;
+
+        }
+        
+        function previous() {
+        }
+        
+        function next() {
+        }
+        
+        function selectRec() {
+                document.getElementById("btnSave").disabled = false;
+                document.getElementById("btnCancel").disabled = false;
+                var obj = document.getElementById(input);
+                obj.value += "Selected : " +  document.getElementById("txtFname").value + " " +
+                    document.getElementById("txtLname").value + ", " + 
+                    document.getElementById("txtStudId").value + ", " + 
+                    document.getElementById("areaOfSpecialization").value+ "\n"; 
+        }
+        
+        </script>  
+        
+        <footer>
+            <p>&copy; 2015 Northwestern Polytechnic University. All rights reserved.</p>
+        </footer>
+    </div>  
+    </body>
+</html>

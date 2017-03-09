@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<!--
+
+
+Student Info: Name=Shraddhaben Gajjar, ID=15992
+
+Subject: CS557_HW2_Summer_2015
+
+Author: shraddha
+
+Filename: orderpage.html
+
+Date and Time: Jun 13, 2016 2:29:57 PM
+
+Project Name: Assignment-2
+
+
+-->
+<html>
+    <head>
+        <title>::15992 Order Page::</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="carrent.css"/>
+    </head>
+    <body style="background-color: black">
+
+        <div  id="main">
+
+            <header id="headertop"><div>	<img src="images/logo.png" border="0"  style=" margin-top: 20px;  width:550px; height: 100px;"   /></div></header>
+            <nav id ="nav">
+                <ul>
+                    <li><a href="index.html">Home page</a></li>
+                    <li><a href="orderpage.html">Order Car</a></li>
+                </ul>
+            </nav>
+            <div id ="submain">
+                <section id="leftside">
+                    <div style="margin-left: 30px;">
+
+                        <h1>Book Your Car. </h1>
+                        <form method="post">
+                            <table cellpadding="5" cellspacing="5"  class="c" border="0">
+                                <tr>
+                                    <td>Car Type  </td>
+                                    <td><select class="cc" name="car_type" id="car_type" style="width:80%;"> 
+                                            <option value="compact">Compact</option>
+                                            <option value="mid">Mid Size</option>
+                                            <option value="luxury">Luxury</option>
+
+                                        </select>
+                                    </td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td>City </td>
+                                    <td><select class="cc" name="city_name" id="city_name" style="width:80%;"> 
+                                            <option value="san_francisco">San Francisco</option>
+                                            <option value="los_angeles">Los Angeles</option>
+                                            <option value="fremont">Fremont</option>
+
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Starting date</td>
+                                    <td><input type="date" class="cc" name="starting_day" id="starting_day" min="2016-06-19"  style="width:80%;"><br/></td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td>Ending date</td>
+                                    <td><input type="date" class="cc" name="ending_day" id="ending_day" min="2016-06-19"  style="width:80%;"><br/></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Number Of Days</td>
+
+                                    <td><input type="text" name="total_days" id="total_days" style="width:80%;" ><br/></td>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td>Do you want Collision </td>
+                                    <td><input type="checkbox" class="cc" value="Collision" name="colloision" id="colloision"/> (Optional) </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td colspan="2">Do you want Gift Card</td>
+
+
+                                    <td><input type="checkbox" class="cc" value="Gift Card" name="giftcard" id="giftcard"/> (Optional) </td>
+                                    <td>&nbsp;&nbsp;</td>
+
+
+                                    <td>&nbsp;&nbsp;</td>
+
+                                </tr>
+
+                                <tr>
+                                    <td><input type="button" class="cc" onclick="onbookcar();" style="background-color: black; color: azure; margin:0px auto; padding-top: 10px; padding-bottom: 10px; padding-left: 20px; padding-right:20px; font-size: large;" name="book" id="book" value="Book Car"/></td>
+                                    <td><input type="button"  class="cc" onclick="onbookcar();" style="background-color: black; color: azure; margin:0px auto; padding-top: 10px; padding-bottom: 10px; padding-left: 20px; padding-right:20px; font-size: large;" name="cost" id="Cost" value="Calculate Rent"/></td>
+
+
+                                    <td>&nbsp;&nbsp;</td>
+                                    <td><input type="reset" class="cc" style="background-color: black; color: azure; margin:0px auto; padding-top: 10px; padding-bottom: 10px; padding-left: 20px; padding-right:20px; font-size: large;" name="reset" value="Cancel"/></td>
+                                    <td>&nbsp;&nbsp;</td>
+                                </tr>
+
+                            </table>
+                        </form>
+                        <div id="perent" style="font-family: monospace; font-size: x-large; width: 50%; padding-top: 30px; padding-left: 20px;"></div>
+                        <script type="text/javascript">
+                            var bookcar = new Array(6);
+                            var start = new Date();
+                            var end = new Date();
+                            var total_price;
+                            var day_rent;
+                            var subcharge;
+                            var rent_subcharge;
+                            var disccount;
+                            var giftcard;
+
+                            function  todatDate() {
+                                var today = new Date();
+                                var dd = today.getDate();
+                                var mm = today.getMonth() + 1;
+                                var yyyy = today.getFullYear();
+
+                                if (dd < 10) {
+                                    dd = '0' + dd;
+                                }
+
+                                if (mm < 10) {
+                                    mm = '0' + mm;
+                                }
+
+                                today = yyyy + '/' + mm + '/' + dd;
+                                return today;
+                            }
+                            function onbookcar() {
+                                start = document.getElementById("starting_day").value;
+                                bookcar[0] = document.getElementById("car_type").value;
+                                bookcar[1] = document.getElementById("city_name").value;
+                                bookcar[2] = document.getElementById("starting_day").value;
+                                start = document.getElementById("starting_day").value;
+                                end = document.getElementById("ending_day").value;
+                                bookcar[3] = document.getElementById("ending_day").value;
+                                bookcar[4] = document.getElementById("total_days").value;
+                                bookcar[5] = document.getElementById("colloision").checked;
+                                if (bookcar[2] === '') {
+                                    var para = document.createElement("p");
+                                    var node = document.createTextNode(" Please Select Date.");
+                                    para.appendChild(node);
+                                    var element = document.getElementById("perent");
+                                    element.appendChild(para);
+                                    return;
+                                } else {
+                                    if (bookcar[3] >= bookcar[2]) {
+
+                                        if (bookcar[5] === "true") {
+                                            if (bookcar[0] === "compact") {
+                                                day_rent = (29.99 * bookcar[4] + 17 * bookcar[4]);
+                                            } else if (bookcar[0] === "mid") {
+                                                day_rent = (29.99 * bookcar[4] + 22 * bookcar[4]);
+                                            } else {
+                                                day_rent = (29.99 * bookcar[4] + 28 * bookcar[4]);
+                                            }
+                                            if (bookcar[1] === "san_francisco") {
+                                                subcharge = (15 * day_rent) / 100;
+
+                                            } else if (bookcar[1] === "los_angeles") {
+                                                subcharge = (15 * day_rent) / 100;
+                                            } else {
+                                                subcharge = (10 * day_rent) / 100;
+                                            }
+                                            rent_subcharge = day_rent + subcharge;
+                                            if (bookcar[4] >= 15) {
+                                                disccount = (10 * day_rent) / 100;
+                                                total_price = rent_subcharge - disccount;
+                                            } else if (bookcar[4] >= 30) {
+                                                disccount = (20 * day_rent) / 100;
+                                                total_price = rent_subcharge - disccount;
+                                            } else {
+                                                total_price = rent_subcharge;
+                                                disccount = "No disccount";
+                                            }
+
+                                        } else {
+
+                                            if (bookcar[0] === "compact") {
+                                                day_rent = (29.99 * bookcar[4]);
+                                            } else if (bookcar[0] === "mid") {
+                                                day_rent = (29.99 * bookcar[4]);
+                                            } else {
+                                                day_rent = (29.99 * bookcar[4]);
+                                            }
+
+                                            if (bookcar[1] == "san_francisco") {
+                                                subcharge = (15 * day_rent) / 100;
+
+                                            } else if (bookcar[1] == "los_angeles") {
+                                                subcharge = (15 * day_rent) / 100;
+                                            } else {
+                                                subcharge = (10 * day_rent) / 100;
+                                            }
+                                            rent_subcharge = day_rent + subcharge;
+                                            if (bookcar[4] >= 15) {
+                                                disccount = (10 * day_rent) / 100;
+                                                total_price = rent_subcharge - disccount;
+                                            } else if (bookcar[4] >= 30) {
+                                                disccount = (20 * day_rent) / 100;
+                                                total_price = rent_subcharge - disccount;
+                                            } else {
+                                                total_price = rent_subcharge;
+                                                disccount = "No disccount";
+                                            }
+
+
+                                        }
+
+                                        var para = document.createElement("div");
+                                        var node = document.createTextNode(" CAR TYPE :" + bookcar[0]);
+                                        para.appendChild(node);
+                                        var element = document.getElementById("perent");
+                                        element.appendChild(para);
+
+                                        node = document.createElement('br');
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+
+                                        node = document.createTextNode("City Name: " + bookcar[1]);
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createElement('br');
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createTextNode("Starting Date: " + bookcar[2]);
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createElement('br');
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createTextNode("Ending date: " + bookcar[3]);
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createElement('br');
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createTextNode("Number Of Days: " + bookcar[4]);
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createElement('br');
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createTextNode(" Collision: " + bookcar[5]);
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createElement('br');
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createTextNode("Rent : " + day_rent.toFixed(2));
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createElement('br');
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createTextNode(" Sub Charges: " + subcharge.toFixed(2));
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createElement('br');
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createTextNode(" Diccount : " + disccount);
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createElement('br');
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createTextNode(" Total Rent: " + total_price.toFixed(2));
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createElement('br');
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+
+                                        node = document.createTextNode(" Car is booked just take print of this details!! Thank you. ");
+                                        para.appendChild(node);
+                                        element.appendChild(para);
+                                    } else {
+                                        var para = document.createElement("p");
+                                        var node = document.createTextNode(" Please Select Valid Date.");
+                                        para.appendChild(node);
+                                        var element = document.getElementById("perent");
+                                        element.appendChild(para);
+                                        return;
+
+                                    }
+                                }
+
+
+
+                            }
+
+                        </script>
+
+                    </div>
+
+                </section>
+
+
+                <aside style="    float: right;  width: 19%; min-height: 400px;  margin: 30px; padding-top: 58px;">
+
+
+                    <table style="width: 90%;"  cellpadding="5" cellspacing="5"  class="c" border="0">
+                        <tr>
+                            <td>
+                                <strong>Rent rate</strong> <br/>
+                                Compact :: $29.99/Day<br/>
+                                Mid - Size :: $39.99/Day<br/>
+                                Luxury :: $49.99/Day
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+
+                    <table style="width: 90%;"  cellpadding="5" cellspacing="5"  class="c" border="0">
+                        <tr>
+                            <td>
+                                <strong>Collision insurance</strong> <br/>
+                                Compact :: $17.00/Day<br/>
+                                Mid - Size :: $22.00/Day<br/>
+                                Luxury :: $28.00/Day
+                            </td>
+                        </tr>
+                    </table>
+
+                </aside>
+                <footer id="footertop">
+                    <br/>
+                    <br/>
+                    <center><font color="black"><strong> <a href="index.html">Home page</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="orderpage.html">Order Car</a> </strong></font>
+                    </center>
+
+                    <center><font color="black"><strong> &copy; - 2016 Northwestern Polytechnic University,All right reserved .</strong></font>
+                    </center>
+
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,123 @@
+
+/*
+
+
+Student Info: Name=Shraddhaben Gajjar, ID=15992
+
+Subject: CS557_HW2_Summer_2015
+
+Author: shraddha
+
+Filename: carrent.css
+
+Date and Time: Jun 10, 2016 2:03:52 PM
+
+Project Name: Assignment-2
+
+*
+*/
+
+/* 
+    Created on : Jun 10, 2016, 2:03:52 PM
+    Author     : shraddha
+*/
+
+body {
+    font-size: 11.5pt;
+    line-height: 1.75em;
+    background-attachment:fixed;
+    background-position:center;
+    letter-spacing: -0.02em;
+}
+#main {
+
+    margin: 0px auto;
+    padding-top: 40px;
+    min-height: 600px;
+}
+#side{
+    float: left;
+    width:23%;
+    min-height: 400px;
+    margin: 0px auto;
+    padding-top: 30px;
+    padding-left: 20px;
+}   
+
+#submain{
+    background-image: url(images/4.jpg);
+    width: 90%;
+    margin: 0px auto;
+    background-attachment:fixed;
+
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+#leftside{
+    width: 75%;
+    float: left;
+    min-height: 400px;
+    margin: 0px auto;
+    padding-top: 30px;
+}
+#nav{
+    width: 70%;
+    margin: 0px auto;
+    height: 70px;
+}
+#ul {
+    width:100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    float: left;
+    margin: 0px auto;
+}
+
+li a {
+    display: block;
+    color: white;
+    font-size:20px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+.active {
+    background-color: azure;
+}
+
+
+#headertop{
+    height:150px;
+    width: 70%;
+    margin: 0px auto;
+}
+#footertop{
+    clear: both;
+
+}
+.c{
+    font-family:Georgia, "Times New Roman", Times, serif;
+    font-size:16px;
+}
+.cc{
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px auto;
+}

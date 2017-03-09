@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<!--
+
+
+Student Info: Name=Shraddhaben Gajjar, ID=15592
+
+Subject: CS557_HW1_Summer_2015
+
+Author: shraddha
+
+Filename: TaMange.html
+
+Date and Time: Jun 1, 2016 1:05:29 PM
+
+Project Name: assignment-1
+
+
+-->
+
+<html>
+    <head>
+        <title>:: 15992 ::</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>   
+            body {
+                font-size: 11.5pt;
+                line-height: 1.75em;
+                background-image: url(bg.jpg);
+                background-color: background;
+                background-attachment:fixed;
+                background-position:center;
+                letter-spacing: -0.02em;
+            }
+            #main {
+                width: 70%;
+                margin: 0px auto;
+                padding-top: 40px;
+                min-height: 600px;
+            }
+            #side{
+                float: left;
+                width:34%;
+                min-height: 400px;
+            }   
+
+            #leftside{
+                float: left;
+                width: 64%;
+                min-height: 400px;
+            }
+            #headertop{
+                height:150px;
+            }
+            #footertop{
+                clear: both;
+                height:70px;
+            }
+            .c{
+                font-family:Georgia, "Times New Roman", Times, serif;
+                font-size:16px;
+            }
+            .cc{
+
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <script type="text/javascript">
+            
+            var j = 0;
+            var tadata = new Array(5);
+            var current = 0;
+            
+            var getRandomNumber = function (size) {
+                return Math.floor(Math.random() * size);
+            };
+            function onload(){
+                document.getElementById("edit").disabled = "true";
+                document.getElementById("save").disabled = "true";
+                document.getElementById("delete").disabled = "true";
+                document.getElementById("cancel").disabled = "true";
+                document.getElementById("first").disabled = "true";
+                document.getElementById("previous").disabled = "ture";
+                document.getElementById("next").disabled = "ture";
+                document.getElementById("last").disabled = "true";
+                document.getElementById("select").disabled = "true";
+
+            }
+            function oncliecknew() {
+
+                document.getElementById("edit").disabled = "true";
+                // document.getElementById("save").disabled = "true";
+                document.getElementById("delete").disabled = "true";
+                // document.getElementById("cancel").disabled = "true";
+                document.getElementById("first").disabled = "true";
+                document.getElementById("previous").disabled = "ture";
+                document.getElementById("next").disabled = "ture";
+                document.getElementById("last").disabled = "true";
+                document.getElementById("select").disabled = "true";
+
+            }
+            function onclicksave() {
+                tadata[j] = new Array();
+                tadata[j][0] = document.getElementById("fname").value;
+                tadata[j][1] = document.getElementById("lname").value;
+                tadata[j][2] = document.getElementById("sid").value;
+                tadata[j][3] = document.getElementById("area").value;
+                tadata[j][4] = document.getElementById("selected").value;
+                document.getElementById("logs").innerHTML += "Added :" + tadata[j][0] + "  " + tadata[j][1] + "  " + tadata[j][2] + "  " + tadata[j][3] + '\n';
+                current = j;
+                j++;
+            }
+
+            function onclickedit() {
+                j--;
+                tadata[j] = new Array(5);
+                tadata[j][0] = document.getElementById("fname").value;
+                tadata[j][1] = document.getElementById("lname").value;
+                tadata[j][2] = document.getElementById("sid").value;
+                tadata[j][3] = document.getElementById("area").value;
+                tadata[j][4] = document.getElementById("selected").value;
+                document.getElementById("logs").innerHTML += "editted :" + tadata[j][0] + "  " + tadata[j][1] + "  " + tadata[j][2] + "  " + tadata[j][3] + '\n';
+                j++;
+            }
+            ;
+            function onclickdelete() {
+                j--
+                document.getElementById("logs").innerHTML += "deleted :" + tadata[j][0] + "  " + tadata[j][1] + "  " + tadata[j][2] + "  " + tadata[j][3] + '\n';
+                tadata[j].splice();
+                j++;
+            }
+            function onclickcancel() {
+                location.reload(true);
+            }
+            function onclickfirst() {
+                document.getElementById("fname").value = tadata[0][0];
+                document.getElementById("lname").value = tadata[0][1];
+                document.getElementById("sid").value = tadata[0][2];
+                document.getElementById("area").value = tadata[0][3];
+                document.getElementById("selected").value = tadata[0][4];
+                current = 0;
+            }
+            function onclickprevious() {
+                k = current;
+                k--;
+                document.getElementById("fname").value = tadata[k][0];
+                document.getElementById("lname").value = tadata[k][1];
+                document.getElementById("sid").value = tadata[k][2];
+                document.getElementById("area").value = tadata[k][3];
+                document.getElementById("selected").value = tadata[k][4];
+                current = k;
+            }
+            function onclicknext() {
+                i = current;
+                i++;
+                document.getElementById("fname").value = tadata[i][0];
+                document.getElementById("lname").value = tadata[i][1];
+                document.getElementById("sid").value = tadata[i][2];
+                document.getElementById("area").value = tadata[i][3];
+                document.getElementById("selected").value = tadata[i][4];
+                current = i;
+            }
+            function onclicklast() {
+                var l = (tadata.length) - 2;
+                document.getElementById("fname").value = tadata[l][0];
+                document.getElementById("lname").value = tadata[l][1];
+                document.getElementById("sid").value = tadata[l][2];
+                document.getElementById("area").value = tadata[l][3];
+                document.getElementById("selected").value = tadata[l][4];
+                current = l;
+            }
+            function onclickselect() {
+                
+                var t = getRandomNumber((tadata.length)-2);
+                document.getElementById("logs").innerHTML += "selected :" + tadata[t][0] + "  " + tadata[t][1] + "  " + tadata[t][2] + "  " + tadata[t][3] + '\n';
+                
+            }
+  
+
+        </script>
+        <div  id="main">
+
+            <header id="headertop"><div>	<img src="logo.png" border="0"  style="margin-top: 20px; margin-left: 20px; width:800px; height:100px;"   /></div></header>
+
+            <aside id="side"><h1>UseFul Links</h1>
+                <ul>
+                    <li><a href="http://www.npu.edu">Npu Website</a></li>
+
+                    <li><a href="https://www.google.com">Google Search</a></li>
+
+                    <li><a href="http://www.bing.com">Bing Search</a></li>
+                </ul>
+            </aside>
+            <section id="leftside">
+                <div>
+                    <fieldset>
+                        <legend> </legend>
+
+                        <h1>This is a test</h1>
+                        <table cellpadding="5" cellspacing="5"  class="c" border="2">
+                            <tr>
+                                <td>First Name:</td>
+                                <td><input class="cc" type="text" name="fname" id="fname"/></td>
+
+                            </tr>
+
+                            <tr>
+                                <td>Last Name:</td>
+                                <td><input class="cc" type="text" name="lname" id="lname"/></td>
+
+                            </tr>
+
+                            <tr>
+                                <td>Student Id:</td>
+
+                                <td><input class="cc" type="text" name="sid" id="sid"/></td>
+
+                            </tr>
+                            <tr>
+                                <td>Area of Specialization : </td>
+                                <td><select class="cc" name="area" id="area"> 
+                                        <option value="Programming">Programming</option>
+                                        <option value="Database">Database</option>
+                                        <option value="Testing">Testing</option>
+                                        <option value="Networking">Networking</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Selected</td>
+                                <td><input class="cc" type="checkbox" name="selected" value="true" id="selected"/></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>    
+                        <legend>
+                        </legend>
+                        <table cellpadding="5" cellspacing="5"  class="c" border="2">
+                            <tr>
+                                <td><input class="cc" type="button" name="new" onclick="oncliecknew()" id="new" value="New"/></td>
+                                <td><input class="cc" type="button" name="edit" id="edit" onclick="onclickedit()" value="Edit" /> </td>
+                                <td><input class="cc" type="button" name="delete" id="delete" onclick="onclickdelete()" value="Delete" /></td>
+                                <td><input class="cc" type="button" name="save" id="save" onclick="onclicksave()" value="Save" /></td>
+                                <td><input class="cc" type="reset" name="cancel" id="cancel" onclick="onclickcancel()" value="Cancel" /></td>
+
+                            </tr>
+                            <tr>
+                                <td><input class="cc" type="button" name="first" id="first" onclick="onclickfirst()" value="First" /></td>
+                                <td><input class="cc" type="button" name="previous" id="previous" onclick="onclickprevious()" value="Previous" /></td>
+                                <td><input class="cc" type="button" name="next" id="next" onclick="onclicknext()" value="Next" /></td>
+                                <td><input class="cc" type="button" name="last" id="last" onclick="onclicklast()" value="Last" /></td>
+                                <td><input class="cc" type="button" name="select" id="select" onclick="onclickselect()" value="Select"/></td>
+
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset>
+                        <legend></legend>
+                        <table>
+                            <tr>
+                                <td>
+                                    <h1>Logs:</h1>   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea rows="10" cols ="70" class="cc" name="logs" id="logs" ></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+
+                </div>
+            </section>
+
+            <footer id="footertop">
+                <br/>
+                <br/>
+                <center><font color="black"><strong> &copy; - 2016 Northwestern Polytechnic University,All right reserved .</strong></font></center>
+
+            </footer>
+        </div>
+    </body>
+</html>

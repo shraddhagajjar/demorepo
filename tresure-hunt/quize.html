@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--
+
+
+Student Info: Name=Shraddhaben Gajjar, ID=15592
+
+Subject: CS557_HW1_Summer_2015
+
+Author: shraddha
+
+Filename: quize.html
+
+Date and Time: Jun 4, 2016 02:48:18 AM
+
+Project Name: Quize1
+
+
+-->
+
+
+<html>
+    <head>
+        <title>:: 15992 ::</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script type="text/javascript">
+            var map = new Array(5);
+            var i = 5;
+            var j = 5;
+            for (i = 0; i < 5; i++) {
+                map[i] = new Array();
+                for (j = 0; j < 5; j++) {
+                    map[i][j] = j;
+                }
+            }
+            var getRandomNumber = function (size) {
+                return Math.floor(Math.random() * size);
+            };
+
+            var xx = 5;
+            var yy = 5;
+            var clicks = 0;
+
+            // Create a random target location 
+            var target = {
+                x: getRandomNumber(xx),
+                y: getRandomNumber(yy)
+            };
+
+            i = 0;
+            j = 0;
+            var current = map[0][0];
+            window.onload = function load () {
+                document.getElementById("tr" + i + "td" + j).style.backgroundColor = "red";
+                document.getElementById("tr" + target.x + "td" + target.y).style.backgroundColor = "purple";
+                document.getElementById("tr" + target.x + "td" + target.y).textContent = "T";
+                if (("tr" + i + "td" + j) == ("tr" + target.x + "td" + target.y)) {
+                    window.alert("You won game");
+                    location.reload(true);
+                }
+            }
+            function onclickup() {
+                if (i == 0)
+                {
+                    window.alert("Youcannot go up");
+                } else {
+                    document.getElementById("tr" + i + "td" + j).style.backgroundColor = "yellow";
+                    document.getElementById("tr" + i + "td" + j).textContent = "C";
+                    i--;
+                    document.getElementById("tr" + i + "td" + j).style.backgroundColor = "red";
+                    if (("tr" + i + "td" + j) == ("tr" + target.x + "td" + target.y)) {
+                        window.alert("You won game");
+                        location.reload(true);
+                    }
+
+                    if ((i < 2) && (j < 2)) {
+                        document.getElementById("message").textContent = "Hot";
+
+                    }
+                }
+            }
+
+            function onclickdown() {
+                if (i >= 4)
+                {
+                    window.alert("You cannot go down");
+                } else {
+                    document.getElementById("tr" + i + "td" + j).style.backgroundColor = "yellow";
+                    document.getElementById("tr" + i + "td" + j).textContent = "C";
+                    i++;
+                    document.getElementById("tr" + i + "td" + j).style.backgroundColor = "red";
+                    if (("tr" + i + "td" + j) == ("tr" + target.x + "td" + target.y)) {
+                        window.alert("You won game");
+                        location.reload(true);
+                    }
+                    if ((i < 2) && (j < 2)) {
+                        document.getElementById("message").textContent = "Hot";
+                    }
+
+                }
+            }
+
+            function onclickright() {
+                if (j >= 4)
+                {
+                    window.alert("You cannot go right");
+                } else {
+                    document.getElementById("tr" + i + "td" + j).style.backgroundColor = "yellow";
+                    document.getElementById("tr" + i + "td" + j).textContent = "C";
+                    j++;
+                    if (("tr" + i + "td" + j) == ("tr" + target.x + "td" + target.y)) {
+                        window.alert("You won game");
+                        location.reload(true);
+                    }
+                    document.getElementById("tr" + i + "td" + j).style.backgroundColor = "red";
+                    if ((i < 2) && (j < 2)) {
+                        document.getElementById("message").textContent = "Hot";
+                    }
+                }
+            }
+
+            function onclickleft() {
+                if (j == 0)
+                {
+                    window.alert("You cannot go left");
+                } else {
+                    document.getElementById("tr" + i + "td" + j).style.backgroundColor = "yellow";
+                    document.getElementById("tr" + i + "td" + j).textContent = "C";
+                    j--;
+                    document.getElementById("tr" + i + "td" + j).style.backgroundColor = "red";
+                    if (("tr" + i + "td" + j) == ("tr" + target.x + "td" + target.y)) {
+                        window.alert("You won game");
+                        location.reload(true);
+                    }
+                    if ((i < 2) && (j < 2)) {
+                        document.getElementById("message").textContent = "Hot";
+                    } else if ((i < 3) && (j < 3)) {
+                        document.getElementById("message").textContent = "Warm";
+                    } else {
+                        document.getElementById("message").textContent = "cool";
+                    }
+                }
+            }
+        </script>
+        <table style="margin: 0px auto;">
+            <tr><td colspan="5"> <strong> Red color  : </strong> USER &nbsp;&nbsp; &nbsp;  <strong>  Yellow Color :  </strong> VISITED &nbsp;&nbsp;&nbsp;  <strong>  Purple Color  </strong> : TREASURE <br/></td></tr>
+            <tr>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr0td0" ></td>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr0td1"></td>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr0td2"></td>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr0td3" > </td>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr0td4"></td>
+            </tr>
+
+            <tr>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr1td0"></td>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr1td1"></td>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr1td2"></td>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr1td3"></td>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr1td4"></td>
+            </tr>
+            <tr>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr2td0"></td>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr2td1"></td>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr2td2"></td>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr2td3"></td>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr2td4"></td>
+            </tr>
+
+
+            <tr>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr3td0"></td>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr3td1"></td>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr3td2"></td>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr3td3"></td>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr3td4"></td>
+            </tr>
+            <tr>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr4td0"></td>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr4td1"></td>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr4td2"></td>
+                <td width="90px" height="90px" style="background-color: white; font-size: 70px;" id="tr4td3"></td>
+                <td width="90px" height="90px" style="background-color: black; font-size: 70px;" id="tr4td4"></td>
+            </tr>
+        </table>
+        <br/>
+
+        <table cellpadding="5" cellspacing="5" width="525px" class="c" border="2" style="margin: 0px auto">
+            <tr>
+                <td><input class="cc" type="submit" name="up" style="width: 100%" onclick="onclickup()" id="up" value="UP"/></td>
+                <td><input class="cc" type="submit" name="right" style="width: 100%" onclick="onclickright()" id="right" value="Right" /> </td>
+                <td><input class="cc" type="submit" name="down" style="width: 100%" onclick="onclickdown()" id="down" value="Down" /></td>
+                <td><input class="cc" type="submit" name="left" style="width: 100%" onclick="onclickleft()" id="left" value="Left" /></td>
+                <td><input class="cc" type="reset" name="exit"   style="width: 100%" onclick="javascript:location.reload(true)" id="exit" value="Exit" /></td>
+
+            </tr>
+            <tr>
+                <td colspan="5" id="message"></td>
+            </tr>
+        </table>
+    </body>
+</html>
